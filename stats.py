@@ -93,6 +93,9 @@ print(summarize_column_stats(data, str_yoe))
 """
 Linear Regression and Correlation of Salary and Years of Experience
 """
+"""
+Correlation calculations with information about what it means
+"""
 correlation_salary_experience = data[[str_salary, str_yoe]].corr().loc[str_salary, str_yoe]
 
 str_correlation_info_range ="""
@@ -131,6 +134,10 @@ elif (correlation < 0):
 print(f"Correlation of Salary and Years of Experience\
 \n Value: {correlation}\n Strength: {correlation_strenght}\n Direction: {correlation_direction}")
 
+
+"""
+Linear regression model with showing a graph
+"""
 data_drop_nan = data.dropna()
 X = data_drop_nan[[str_yoe]]
 y = data_drop_nan[str_salary]
@@ -152,7 +159,7 @@ plt.show()
 
 
 """
-T-Test for Salaries by Gender
+T-Test for Salaries by Gender with information about what its results mean
 """
 alpha = 0.05  # Significance level; 0.05 is used something like by "default"
 
@@ -171,5 +178,3 @@ if p_value < alpha:
 else:
     print("The result is not statistically significant so we fail to reject the null hypothesis")
     print("There is no significant difference in salaries between males and females.")
-
-# Possible: correlation of education and salary
