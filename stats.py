@@ -12,20 +12,20 @@ This part is for first part of the project,
 `calculating average, median, variance standard deviation, quartiles for Salary and Years of Experience`
 """
 # statistics for Salary
-salary_mean = data[str_salary].mean().round(2)
-salary_median = data[str_salary].median().round(2)
-salary_variance = data[str_salary].var().round(2)
-salary_std_dev = data[str_salary].std().round(2)
+salary_mean = data[str_salary].mean()
+salary_median = data[str_salary].median()
+salary_variance = data[str_salary].var()
+salary_std_dev = data[str_salary].std()
 # I will actually be doing deciles not quartiles
-salary_deciles = data[str_salary].quantile([i/10 for i in range(1, 10)]).round(2)
+salary_deciles = data[str_salary].quantile([i/10 for i in range(1, 10)])
 
 # statistics for Years of Experience
-experience_mean = data[str_yoe].mean().round(2)
-experience_median = data[str_yoe].median().round(2)
-experience_variance = data[str_yoe].var().round(2)
-experience_std_dev = data[str_yoe].std().round(2)
+experience_mean = data[str_yoe].mean()
+experience_median = data[str_yoe].median()
+experience_variance = data[str_yoe].var()
+experience_std_dev = data[str_yoe].std()
 # deciles not quartiles
-experience_deciles = data[str_yoe].quantile([i/10 for i in range(1, 10)]).round(2)
+experience_deciles = data[str_yoe].quantile([i/10 for i in range(1, 10)])
 
 salary_stats = {
     "Mean": salary_mean,
@@ -43,8 +43,14 @@ experience_stats = {
     "Quartiles": experience_deciles
 }
 
+print()
 for stat_name, stat_value in salary_stats.items():
-    print(f"{stat_name}: {stat_value}")
+    print(f"{stat_name}: {stat_value.round(2)}")
 
+print()
 for experience_name, experience_value in experience_stats.items():
-    print(f"{experience_name}: {experience_value}")
+    print(f"{experience_name}: {experience_value.round(2)}")
+
+correlation_salary_experience = data[[str_salary, str_yoe]].corr().loc[str_salary, str_yoe]
+
+print(correlation_salary_experience.round(3))
