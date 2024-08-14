@@ -53,4 +53,37 @@ for experience_name, experience_value in experience_stats.items():
 
 correlation_salary_experience = data[[str_salary, str_yoe]].corr().loc[str_salary, str_yoe]
 
-print(correlation_salary_experience.round(3))
+str_correlation_info_range ="""
+Correlation can range [-1, 1]
+1: Perfect positive linear relationship.
+-1: Perfect negative linear relationship.
+0: No linear relationship.
+
+|r| > 0.7: Strong correlation.
+0.7 to 1: Strong positive correlation.
+-1 to -0.7: Strong negative correlation.
+0.3 < |r| ≤ 0.7: Moderate correlation.
+0.3 to 0.7: Moderate positive correlation.
+-0.7 to -0.3: Moderate negative correlation.
+|r| ≤ 0.3: Weak correlation.
+0 to 0.3: Weak positive correlation.
+-0.3 to 0: Weak negative correlation.
+"""
+# print(str_correlation_info_range)
+
+correlation = correlation_salary_experience.round(3)
+abs_corr = abs(correlation)
+if (abs_corr >= 0.7 and abs_corr <= 1):
+    correlation_strenght = "Strong"
+elif (abs_corr >= 0.3 and abs_corr < 0.7):
+    correlation_strenght = "Moderate"
+elif (abs_corr >= 0 and abs_corr < 0.3):
+    correlation_strenght = "Weak"
+
+correlation_direction = "None"
+if (correlation > 0):
+    correlation_direction = "Positive"
+elif (correlation < 0):
+    correlation_direction = "Negative"
+
+print(f"Correlation\n Value: {correlation}\n Strength: {correlation_strenght}\n Direction: {correlation_direction}")
