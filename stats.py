@@ -1,4 +1,8 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.linear_model import LinearRegression
+import numpy as np
 
 # Load the CSV file
 file_path = 'Salary Data.csv'
@@ -51,6 +55,9 @@ print()
 for experience_name, experience_value in experience_stats.items():
     print(f"{experience_name}: {experience_value.round(2)}")
 
+"""
+Linear Regression and Correlation
+"""
 correlation_salary_experience = data[[str_salary, str_yoe]].corr().loc[str_salary, str_yoe]
 
 str_correlation_info_range ="""
@@ -87,3 +94,22 @@ elif (correlation < 0):
     correlation_direction = "Negative"
 
 print(f"Correlation\n Value: {correlation}\n Strength: {correlation_strenght}\n Direction: {correlation_direction}")
+
+data_drop_nan = data.dropna()
+X = data_drop_nan[[str_yoe]]
+y = data_drop_nan[str_salary]
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=str_yoe, y=str_salary, data=data_drop_nan, color='blue', label='Data Points')
+
+plt.plot(data_drop_nan[str_yoe], predictions, color='red', linewidth=2, label='Linear Regression Line')
+
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.title('Salary vs. Years of Experience with Linear Regression')
+plt.legend()
+
+plt.show()
