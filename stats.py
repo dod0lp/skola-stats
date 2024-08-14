@@ -12,19 +12,19 @@ This part is for first part of the project,
 `calculating average, median, variance standard deviation, quartiles for Salary and Years of Experience`
 """
 # statistics for Salary
-salary_mean = data['Salary'].mean()
-salary_median = data['Salary'].median()
-salary_variance = data['Salary'].var()
-salary_std_dev = data['Salary'].std()
-salary_quartiles = data['Salary'].quantile([0.25, 0.5, 0.75])
+salary_mean = data[str_salary].mean()
+salary_median = data[str_salary].median()
+salary_variance = data[str_salary].var()
+salary_std_dev = data[str_salary].std()
+salary_quartiles = data[str_salary].quantile([0.25, 0.5, 0.75])
 
 # statistics for Years of Experience
-experience_mean = data['Years of Experience'].mean()
-experience_median = data['Years of Experience'].median()
-experience_variance = data['Years of Experience'].var()
-experience_std_dev = data['Years of Experience'].std()
+experience_mean = data[str_yoe].mean()
+experience_median = data[str_yoe].median()
+experience_variance = data[str_yoe].var()
+experience_std_dev = data[str_yoe].std()
 # I will actually be doing decils not quartiles
-experience_deciles = data['Years of Experience'].quantile([i/10 for i in range(1, 10)])
+experience_deciles = data[str_yoe].quantile([i/10 for i in range(1, 10)])
 
 # simply print the results
 print("Salary Statistics:")
