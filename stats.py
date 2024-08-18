@@ -7,6 +7,11 @@ import numpy as np
 
 from scipy import stats
 
+separator_ = "=" * 100
+
+print(separator_)
+
+
 # Load the CSV file
 file_path = "Salary Data.csv"
 data = pd.read_csv(file_path)
