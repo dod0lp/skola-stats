@@ -67,8 +67,6 @@ if (UniqueValuesCount):
 This part is for first part of the project,
 `calculating average, median, variance standard deviation, quartiles for Salary and Years of Experience`
 """
-separate()
-
 def summarize_column_stats(data: pd.DataFrame, column_name: str) -> str:
     mean_value = data[column_name].mean()
     median_value = data[column_name].median()
@@ -152,14 +150,11 @@ elif (correlation < 0):
 separate()
 print(f"Correlation of Salary and Years of Experience\
 \n Value: {correlation}\n Strength: {correlation_strenght}\n Direction: {correlation_direction}")
-separate()
 
 
 """
 Linear regression model with showing a graph
 """
-separate()
-
 data_drop_nan = data.dropna()
 X = data_drop_nan[[str_yoe]]
 y = data_drop_nan[str_salary]
@@ -178,8 +173,6 @@ plt.title('Salary vs. Years of Experience with Linear Regression')
 plt.legend()
 
 plt.show()
-
-separate()
 
 
 """
