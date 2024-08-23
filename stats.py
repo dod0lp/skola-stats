@@ -7,6 +7,9 @@ import numpy as np
 
 from scipy import stats
 
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
+
+
 separator_ = "=" * 100
 
 def separate() -> None:
@@ -29,6 +32,7 @@ data = data[data[str_age] >= 18]
 # use only data where genders are Male or Female
 data = data[data[str_gender].str.lower().isin(["male", "female"])]
 
+# Make dataset only for female/male gender
 data_male = data[data[str_gender].str.lower().isin(["male"])]
 data_female = data[data[str_gender].str.lower().isin(["female"])]
 
@@ -42,7 +46,8 @@ separate()
 def count_unique_values_from_csv(file_path: str, column_name: str, is_int: bool = False) -> str:
     data = pd.read_csv(file_path)
     
-    # I could apply filter like ignore NaN values here
+    # I could apply filter like ignore NaN values here, but I made some heuristics at the begining
+    # to clean up the data
     filtered_data = data
 
     value_counts = filtered_data[column_name].value_counts()
@@ -124,13 +129,13 @@ print()
 # print(summarize_column_stats(data[data[str_gender] == "Male"], str_salary))
 # print(summarize_column_stats(data[data[str_gender] == "Female"], str_salary))
 
+
 """
 Linear Regression and Correlation of Salary and Years of Experience
 Correlation calculations with information about what it means
 """
 separate()
 
-correlation_salary_experience = data[[str_salary, str_yoe]].corr().loc[str_salary, str_yoe]
 
 str_correlation_info_range ="""
 Correlation can range [-1, 1]
@@ -149,6 +154,9 @@ Correlation can range [-1, 1]
 -0.3 to 0: Weak negative correlation.
 """
 print(str_correlation_info_range)
+
+
+correlation_salary_experience = data[[str_salary, str_yoe]].corr().loc[str_salary, str_yoe]
 
 correlation = correlation_salary_experience.round(3)
 abs_corr = abs(correlation)
@@ -205,7 +213,7 @@ female_salaries = data[data[str_gender] == "Female"][str_salary]
 
 t_stat, p_value = stats.ttest_ind(male_salaries, female_salaries, equal_var=False)
 
-print("\nT-Test for Salaries by Gender")
+print("\nT-Test for Salaries by Gender, whether or not gender plays a role")
 print(f" T-Statistic: {t_stat.round(2)}")
 print(f" P-Value: {p_value.round(2)}")
 
@@ -217,3 +225,46 @@ if p_value < alpha:
 else:
     print("The result is not statistically significant so we fail to reject the null hypothesis")
     print("There is no significant difference in salaries between males and females.")
+
+
+"""
+Test for Salary vs Education, Education level is independent
+
+Shapiro-Wilk Test Results: Indicates whether the salary distribution is normal for each education level.
+ANOVA Results: Shows whether there's a significant difference in mean salaries across education levels.
+Tukey's HSD: Identifies specific pairs of education levels that differ in salary.
+Kruskal-Wallis Test: Non-parametric test results if ANOVA assumptions are not met.
+Boxplot: Visual representation of salary distribution by education level.
+"""
+# Check if the data is normally distributed for each education level group
+# but first clean them because then plotting wont work work
+data_cleaned = data.dropna(subset=["Salary", "Education Level"])
+education_groups = data_cleaned.groupby("Education Level")["Salary"]
+
+for level, group_data in education_groups:
+    stat, p_value = stats.shapiro(group_data)
+    print(f"Shapiro-Wilk Test for {level}:")
+    print(f"  Statistic: {stat:.3f}, P-Value: {p_value:.3f}")
+    print("  Normally Distributed" if p_value > 0.05 else "  Not Normally Distributed")
+    print()
+
+# Perform ANOVA if the data is normally distributed across groups
+anova_stat, anova_p_value = stats.f_oneway(*[group for name, group in education_groups])
+print(f"ANOVA Result: F-statistic = {anova_stat:.3f}, P-Value = {anova_p_value:.3f}")
+
+# If the ANOVA P-Value is significant, perform post-hoc test (Tukey's HSD)
+if anova_p_value < 0.05:
+    tukey_result = pairwise_tukeyhsd(endog=salary, groups=education_levels, alpha=0.05)
+    print(tukey_result)
+
+# If data is not normally distributed or ANOVA assumptions are violated, perform Kruskal-Wallis Test
+kruskal_stat, kruskal_p_value = stats.kruskal(*[group for name, group in education_groups])
+print(f"Kruskal-Wallis Test: H-statistic = {kruskal_stat:.3f}, P-Value = {kruskal_p_value:.3f}")
+
+# Visualize the distribution of salary by education level
+plt.figure(figsize=(12, 6))
+sns.boxplot(x="Education Level", y="Salary", data=data_cleaned)
+plt.title("Salary Distribution by Education Level")
+plt.xlabel("Education Level")
+plt.ylabel("Salary")
+plt.show()
