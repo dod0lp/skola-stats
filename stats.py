@@ -23,6 +23,16 @@ str_education = "Education Level"
 str_age = "Age"
 str_title = "Job Title"
 
+# Cleaning data by some heuristics
+data = data[data[str_salary] >= 30000]
+data = data[data[str_age] >= 18]
+# use only data where genders are Male or Female
+data = data[data[str_gender].str.lower().isin(["male", "female"])]
+
+data_male = data[data[str_gender].str.lower().isin(["male"])]
+data_female = data[data[str_gender].str.lower().isin(["female"])]
+
+
 
 """
 Print number of unique values in each column
@@ -90,6 +100,14 @@ def summarize_column_stats(data: pd.DataFrame, column_name: str) -> str:
 print("Statistics for Salary")
 separate()
 print(summarize_column_stats(data, str_salary))
+separate()
+print("Statistics for Salary: Male")
+separate()
+print(summarize_column_stats(data_male, str_salary))
+separate()
+print("Statistics for Salary: Female")
+separate()
+print(summarize_column_stats(data_female, str_salary))
 separate()
 
 print()
