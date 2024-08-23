@@ -232,6 +232,8 @@ else:
     print("The result is not statistically significant so we fail to reject the null hypothesis")
     print("There is no significant difference in salaries between males and females.")
 
+separate()
+
 
 """
 Test for Salary vs Education, Education level is independent
@@ -257,21 +259,29 @@ for level, group_data in education_groups:
     print(f"Shapiro-Wilk Test for {level}:")
     print(f"  Statistic: {stat:.3f}, P-Value: {p_value:.3f}")
     print("  Normally Distributed" if p_value > 0.05 else "  Not Normally Distributed")
-    print()
+    separate()
+
 
 # Perform ANOVA if the data is normally distributed across groups
 anova_stat, anova_p_value = stats.f_oneway(*[group for name, group in education_groups])
 print(f"ANOVA Result: F-statistic = {anova_stat:.3f}, P-Value = {anova_p_value:.3f}")
+
+separate()
 
 # If the ANOVA P-Value is significant, perform "Tukey's" post-hoc test
 if anova_p_value < 0.05:
     tukey_result = pairwise_tukeyhsd(endog=salary_levels, groups=education_levels, alpha=0.05)
     print(tukey_result)
 
+separate()
+
 # If data is not normally distributed or ANOVA assumptions are violated, perform Kruskal-Wallis Test
 kruskal_stat, kruskal_p_value = stats.kruskal(*[group for name, group in education_groups])
 print(f"Kruskal-Wallis Test: H-statistic = {kruskal_stat:.3f}, P-Value = {kruskal_p_value:.3f}")
 
+separate()
+
+print("Simple statistical visualization, dots (or circles) are outliers")
 # Simple visualization of the distribution of salary by education level
 plt.figure(figsize=(12, 6))
 sns.boxplot(x="Education Level", y="Salary", data=data_cleaned_salary_education)
@@ -279,3 +289,5 @@ plt.title("Salary Distribution by Education Level")
 plt.xlabel("Education Level")
 plt.ylabel("Salary")
 plt.show()
+
+separate()
