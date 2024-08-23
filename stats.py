@@ -191,7 +191,13 @@ predictions = model.predict(X)
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x=str_yoe, y=str_salary, data=data_drop_nan, color='blue', label='Data Points')
 
-plt.plot(data_drop_nan[str_yoe], predictions, color='red', linewidth=2, label='Linear Regression Line')
+# PIP upgraded some module and this no longer worked
+# plt.plot(data_drop_nan[str_yoe], predictions, color='red', linewidth=2, label='Linear Regression Line')
+
+x_values = np.array(data_drop_nan[str_yoe])
+y_values = np.array(predictions)
+
+plt.plot(x_values, y_values, color='red', linewidth=2, label='Linear Regression Line')
 
 plt.xlabel('Years of Experience')
 plt.ylabel('Salary')
@@ -238,8 +244,13 @@ Boxplot: Visual representation of salary distribution by education level.
 """
 # Check if the data is normally distributed for each education level group
 # but first clean them because then plotting wont work work
-data_cleaned = data.dropna(subset=["Salary", "Education Level"])
-education_groups = data_cleaned.groupby("Education Level")["Salary"]
+# and data I cleaned before are cleaned using different method()
+data_cleaned_salary_education = data.dropna(subset=[str_salary, str_education])
+
+# Prepare data for tests Salary/Education
+education_groups = data_cleaned_salary_education.groupby(str_education)[str_salary]
+education_levels = data_cleaned_salary_education[str_education]
+salary_levels = data_cleaned_salary_education[str_salary]
 
 for level, group_data in education_groups:
     stat, p_value = stats.shapiro(group_data)
@@ -252,18 +263,18 @@ for level, group_data in education_groups:
 anova_stat, anova_p_value = stats.f_oneway(*[group for name, group in education_groups])
 print(f"ANOVA Result: F-statistic = {anova_stat:.3f}, P-Value = {anova_p_value:.3f}")
 
-# If the ANOVA P-Value is significant, perform post-hoc test (Tukey's HSD)
+# If the ANOVA P-Value is significant, perform "Tukey's" post-hoc test
 if anova_p_value < 0.05:
-    tukey_result = pairwise_tukeyhsd(endog=salary, groups=education_levels, alpha=0.05)
+    tukey_result = pairwise_tukeyhsd(endog=salary_levels, groups=education_levels, alpha=0.05)
     print(tukey_result)
 
 # If data is not normally distributed or ANOVA assumptions are violated, perform Kruskal-Wallis Test
 kruskal_stat, kruskal_p_value = stats.kruskal(*[group for name, group in education_groups])
 print(f"Kruskal-Wallis Test: H-statistic = {kruskal_stat:.3f}, P-Value = {kruskal_p_value:.3f}")
 
-# Visualize the distribution of salary by education level
+# Simple visualization of the distribution of salary by education level
 plt.figure(figsize=(12, 6))
-sns.boxplot(x="Education Level", y="Salary", data=data_cleaned)
+sns.boxplot(x="Education Level", y="Salary", data=data_cleaned_salary_education)
 plt.title("Salary Distribution by Education Level")
 plt.xlabel("Education Level")
 plt.ylabel("Salary")
