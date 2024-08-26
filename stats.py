@@ -263,7 +263,7 @@ for level, group_data in education_groups:
 
 
 # Perform ANOVA if the data is normally distributed across groups
-anova_stat, anova_p_value = stats.f_oneway(*[group for name, group in education_groups])
+anova_stat, anova_p_value = stats.f_oneway(*[group for _, group in education_groups])
 print(f"ANOVA Result: F-statistic = {anova_stat:.3f}, P-Value = {anova_p_value:.3f}")
 
 separate()
@@ -276,7 +276,7 @@ if anova_p_value < 0.05:
 separate()
 
 # If data is not normally distributed or ANOVA assumptions are violated, perform Kruskal-Wallis Test
-kruskal_stat, kruskal_p_value = stats.kruskal(*[group for name, group in education_groups])
+kruskal_stat, kruskal_p_value = stats.kruskal(*[group for _, group in education_groups])
 print(f"Kruskal-Wallis Test: H-statistic = {kruskal_stat:.3f}, P-Value = {kruskal_p_value:.3f}")
 
 separate()
