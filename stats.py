@@ -254,6 +254,8 @@ education_groups = data_cleaned_salary_education.groupby(str_education)[str_sala
 education_levels = data_cleaned_salary_education[str_education]
 salary_levels = data_cleaned_salary_education[str_salary]
 
+# Shapiro-Wilk test for normality
+# https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test
 for level, group_data in education_groups:
     stat, p_value = stats.shapiro(group_data)
     print(f"Shapiro-Wilk Test for {level}:")
@@ -262,13 +264,16 @@ for level, group_data in education_groups:
     separate()
 
 
-# Perform ANOVA if the data is normally distributed across groups
+# Perform Analysis of Variance (ANOVA) if the data is normally distributed across groups
+# https://www.spotfire.com/glossary/what-is-analysis-of-variance-anova#:~:text=Analysis%20of%20Variance%20(ANOVA)%20is,the%20means%20of%20different%20groups.
+# https://en.wikipedia.org/wiki/Analysis_of_variance
 anova_stat, anova_p_value = stats.f_oneway(*[group for _, group in education_groups])
 print(f"ANOVA Result: F-statistic = {anova_stat:.3f}, P-Value = {anova_p_value:.3f}")
 
 separate()
 
 # If the ANOVA P-Value is significant, perform "Tukey's" post-hoc test
+# https://en.wikipedia.org/wiki/Tukey%27s_range_test
 if anova_p_value < 0.05:
     tukey_result = pairwise_tukeyhsd(endog=salary_levels, groups=education_levels, alpha=0.05)
     print(tukey_result)
@@ -276,6 +281,7 @@ if anova_p_value < 0.05:
 separate()
 
 # If data is not normally distributed or ANOVA assumptions are violated, perform Kruskal-Wallis Test
+# https://en.wikipedia.org/wiki/Kruskal%E2%80%93Wallis_test
 kruskal_stat, kruskal_p_value = stats.kruskal(*[group for _, group in education_groups])
 print(f"Kruskal-Wallis Test: H-statistic = {kruskal_stat:.3f}, P-Value = {kruskal_p_value:.3f}")
 
