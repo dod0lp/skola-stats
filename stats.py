@@ -19,6 +19,9 @@ def separate() -> None:
 file_path = "Salary Data.csv"
 data = pd.read_csv(file_path)
 
+# Significance level; 0.05 is used something like by "default"
+alpha_value = 0.05
+
 str_yoe = "Years of Experience"
 str_salary = "Salary"
 str_gender = "Gender"
@@ -106,10 +109,12 @@ print("Statistics for Salary")
 separate()
 print(summarize_column_stats(data, str_salary))
 separate()
+
 print("Statistics for Salary: Male")
 separate()
 print(summarize_column_stats(data_male, str_salary))
 separate()
+
 print("Statistics for Salary: Female")
 separate()
 print(summarize_column_stats(data_female, str_salary))
@@ -117,7 +122,6 @@ separate()
 
 print()
 
-# statistics for Years of Experience
 print("Statistics for Years of Experience")
 separate()
 print(summarize_column_stats(data, str_yoe))
@@ -212,7 +216,6 @@ T-Test for Salaries by Gender with information about what its results mean
 """
 separate()
 
-alpha = 0.05  # Significance level; 0.05 is used something like by "default"
 
 male_salaries = data[data[str_gender] == "Male"][str_salary]
 female_salaries = data[data[str_gender] == "Female"][str_salary]
@@ -225,7 +228,8 @@ print(f" P-Value: {p_value.round(2)}")
 
 print()
 
-if p_value < alpha:
+# Simply print() what do results mean based on alpha value - significance
+if p_value < alpha_value:
     print("The result is statistically significant so we reject the null hypothesis")
     print("There is a significant difference in salaries between males and females.")
 else:
@@ -274,8 +278,8 @@ separate()
 
 # If the ANOVA P-Value is significant, perform "Tukey's" post-hoc test
 # https://en.wikipedia.org/wiki/Tukey%27s_range_test
-if anova_p_value < 0.05:
-    tukey_result = pairwise_tukeyhsd(endog=salary_levels, groups=education_levels, alpha=0.05)
+if anova_p_value < alpha_value:
+    tukey_result = pairwise_tukeyhsd(endog=salary_levels, groups=education_levels, alpha=alpha_value)
     print(tukey_result)
 
 separate()
