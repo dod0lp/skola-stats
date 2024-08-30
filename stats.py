@@ -2,6 +2,7 @@ import pandas as pd
 
 import matplotlib.pyplot as plt
 import seaborn as sns
+import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
@@ -15,12 +16,13 @@ separator_ = "=" * 100
 def separate() -> None:
     print(separator_)
 
+# Significance level; 0.05 is used something like by "default"
+alpha_value = 0.05
+
+
 # Load the CSV file
 file_path = "Salary Data.csv"
 data = pd.read_csv(file_path)
-
-# Significance level; 0.05 is used something like by "default"
-alpha_value = 0.05
 
 str_yoe = "Years of Experience"
 str_salary = "Salary"
@@ -194,6 +196,20 @@ predictions = model.predict(X)
 
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x=str_yoe, y=str_salary, data=data_drop_nan, color='blue', label='Data Points')
+
+coefficient = model.coef_[0]
+print(f"Coefficient (Slope): {coefficient}")
+
+# 2. R-squared value
+r_squared = model.score(X, y)
+print(f"R-squared: {r_squared}")
+
+# 3. Statistical Test (p-value) using statsmodels
+X_with_constant = sm.add_constant(X)
+model_sm = sm.OLS(y, X_with_constant)
+results = model_sm.fit()
+
+print(results.summary())
 
 # PIP upgraded some module and this no longer worked
 # plt.plot(data_drop_nan[str_yoe], predictions, color='red', linewidth=2, label='Linear Regression Line')
