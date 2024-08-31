@@ -20,7 +20,6 @@ def separate() -> None:
 alpha_value = 0.05
 
 
-# Load the CSV file
 file_path = "Salary Data.csv"
 data = pd.read_csv(file_path)
 
@@ -50,9 +49,7 @@ separate()
 
 def count_unique_values_from_csv(file_path: str, column_name: str, is_int: bool = False) -> str:
     data = pd.read_csv(file_path)
-    
-    # I could apply filter like ignore NaN values here, but I made some heuristics at the begining
-    # to clean up the data
+
     filtered_data = data
 
     value_counts = filtered_data[column_name].value_counts()
@@ -69,6 +66,8 @@ def count_unique_values_from_csv(file_path: str, column_name: str, is_int: bool 
 
 UniqueValuesCount = True
 if (UniqueValuesCount):
+    print("Information about dataset")
+    separate()
     print(count_unique_values_from_csv(file_path, str_education))
     separate()
     print(count_unique_values_from_csv(file_path, str_salary, is_int=True))
@@ -180,9 +179,9 @@ elif (correlation < 0):
     correlation_direction = "Negative"
 
 separate()
-print(f"Correlation of Salary and Years of Experience\
+print(f"Correlation of higher Salary and higher Years of Experience\
 \n Value: {correlation}\n Strength: {correlation_strenght}\n Direction: {correlation_direction}")
-
+separate()
 
 """
 Linear regression model with showing a graph
@@ -200,11 +199,16 @@ sns.scatterplot(x=str_yoe, y=str_salary, data=data_drop_nan, color='blue', label
 coefficient = model.coef_[0]
 print(f"Coefficient (Slope): {coefficient}")
 
-# 2. R-squared value
 r_squared = model.score(X, y)
-print(f"R-squared: {r_squared}")
+if (r_squared < 0.5):
+    r_squared_fit = "poor"
+elif (r_squared < 0.7):
+    r_squared_fit = "moderate"
+else:
+    r_squared_fit = "good"
 
-# 3. Statistical Test (p-value) using statsmodels
+print(f"R-squared: {r_squared}.\n That means {r_squared_fit} fit.")
+
 X_with_constant = sm.add_constant(X)
 model_sm = sm.OLS(y, X_with_constant)
 results = model_sm.fit()
@@ -264,6 +268,8 @@ Tukey's HSD: Identifies specific pairs of education levels that differ in salary
 Kruskal-Wallis Test: Non-parametric test results if ANOVA assumptions are not met.
 Boxplot: Visual representation of salary distribution by education level.
 """
+
+print("Tests for Salary vs Education, Education level, if is independent etc")
 # Check if the data is normally distributed for each education level group
 # but first clean them because then plotting wont work work
 # and data I cleaned before are cleaned using different method()
@@ -274,6 +280,7 @@ education_groups = data_cleaned_salary_education.groupby(str_education)[str_sala
 education_levels = data_cleaned_salary_education[str_education]
 salary_levels = data_cleaned_salary_education[str_salary]
 
+print("Testing normal distribution for education levels")
 # Shapiro-Wilk test for normality
 # https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test
 for level, group_data in education_groups:
@@ -288,7 +295,20 @@ for level, group_data in education_groups:
 # https://www.spotfire.com/glossary/what-is-analysis-of-variance-anova#:~:text=Analysis%20of%20Variance%20(ANOVA)%20is,the%20means%20of%20different%20groups.
 # https://en.wikipedia.org/wiki/Analysis_of_variance
 anova_stat, anova_p_value = stats.f_oneway(*[group for _, group in education_groups])
-print(f"ANOVA Result: F-statistic = {anova_stat:.3f}, P-Value = {anova_p_value:.3f}")
+print()
+
+anova_salary_edu_interpretation = "ANOVA stat:\n"
+anova_salary_edu_interpretation += f"The F-statistic is {anova_stat:.3f}. "
+anova_salary_edu_interpretation += "This measures the ratio of variance between the group means to the variance within the groups.\n"
+anova_salary_edu_interpretation += f"The P-value is {anova_p_value:.3f}. "
+
+if anova_p_value < alpha_value:
+    anova_salary_edu_interpretation += ("Since the P-value is less than 0.05, we reject the null hypothesis."
+                       "This indicates that there is a statistically significant\n difference in mean salaries across the different education levels.\n")
+else:
+    anova_salary_edu_interpretation += ("Since the P-value is greater than or equal to 0.05, we fail to reject the null hypothesis.")
+
+print(anova_salary_edu_interpretation)
 
 separate()
 
@@ -302,12 +322,18 @@ separate()
 
 # If data is not normally distributed or ANOVA assumptions are violated, perform Kruskal-Wallis Test
 # https://en.wikipedia.org/wiki/Kruskal%E2%80%93Wallis_test
+print("Is median income different between groups? Kruskal-Wallis:\n")
 kruskal_stat, kruskal_p_value = stats.kruskal(*[group for _, group in education_groups])
 print(f"Kruskal-Wallis Test: H-statistic = {kruskal_stat:.3f}, P-Value = {kruskal_p_value:.3f}")
 
+if (kruskal_p_value < alpha_value):
+    print("Reject the null hypothesis, which suggests that at least one group's median salary differs, statistically significent, from the others")
+if (kruskal_p_value >= alpha_value):
+    print("Fail to reject the null hypothesis, indicating no significant difference in median salary across the education levels")
+
 separate()
 
-print("Simple statistical visualization, dots (or circles) are outliers")
+print("Simple statistical visualization of Salary per Education Level")
 # Simple visualization of the distribution of salary by education level
 plt.figure(figsize=(12, 6))
 sns.boxplot(x="Education Level", y="Salary", data=data_cleaned_salary_education)
@@ -317,3 +343,43 @@ plt.ylabel("Salary")
 plt.show()
 
 separate()
+
+print("Statistics for Age and Education Level")
+
+data_cleaned = data.dropna(subset=["Age", "Education Level"])
+
+education_groups = data_cleaned.groupby("Education Level")["Age"]
+
+# Check for normality using the Shapiro-Wilk test
+normality_results = {}
+for level, group in education_groups:
+    stat, p_value = stats.shapiro(group)
+    normality_results[level] = (stat, p_value)
+    print(f"Shapiro-Wilk Test for {level}: Statistic = {stat:.3f}, P-Value = {p_value:.3f}")
+
+use_anova = all(p > alpha_value for _, p in normality_results.values())
+
+if use_anova:
+    anova_stat, anova_p_value = stats.f_oneway(*[group for _, group in education_groups])
+    print(f"\nANOVA Result: F-statistic = {anova_stat:.3f}, P-Value = {anova_p_value:.3f}")
+    
+    if anova_p_value < alpha_value:
+        print("There is a statistically significant difference in mean age across different education levels.")
+    else:
+        print("There is no statistically significant difference in mean age across different education levels.")
+else:
+    kruskal_stat, kruskal_p_value = stats.kruskal(*[group for _, group in education_groups])
+    print(f"\nKruskal-Wallis Test: H-statistic = {kruskal_stat:.3f}, P-Value = {kruskal_p_value:.3f}")
+    
+    if kruskal_p_value < alpha_value:
+        print("There is a statistically significant difference in age distribution across different education levels.")
+    else:
+        print("There is no statistically significant difference in age distribution across different education levels.")
+
+# Visualize the distribution of age by education level
+plt.figure(figsize=(12, 6))
+sns.boxplot(x="Education Level", y="Age", data=data_cleaned)
+plt.title("Age Distribution by Education Level")
+plt.xlabel("Education Level")
+plt.ylabel("Age")
+plt.show()
