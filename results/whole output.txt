@@ -1,0 +1,480 @@
+====================================================================================================
+Information about dataset
+====================================================================================================
+Counts of unique values in 'Education Level':
+  Bachelor's: 224 times
+  Master's: 98 times
+  PhD: 51 times
+====================================================================================================
+Counts of unique values in 'Salary':
+  40000: 31 times
+  95000: 22 times
+  50000: 22 times
+  180000: 20 times
+  120000: 20 times
+  90000: 18 times
+  150000: 18 times
+  45000: 18 times
+  110000: 17 times
+  160000: 17 times
+  60000: 17 times
+  170000: 16 times
+  130000: 14 times
+  100000: 14 times
+  140000: 14 times
+  35000: 13 times
+  80000: 12 times
+  85000: 10 times
+  55000: 10 times
+  70000: 9 times
+  65000: 9 times
+  105000: 6 times
+  190000: 4 times
+  75000: 4 times
+  115000: 3 times
+  175000: 2 times
+  135000: 2 times
+  200000: 2 times
+  250000: 2 times
+  125000: 1 times
+  30000: 1 times
+  220000: 1 times
+  185000: 1 times
+  145000: 1 times
+  155000: 1 times
+  350: 1 times
+====================================================================================================
+Counts of unique values in 'Years of Experience':
+  2: 31 times
+  3: 30 times
+  8: 25 times
+  9: 22 times
+  4: 20 times
+  7: 18 times
+  10: 18 times
+  16: 18 times
+  5: 17 times
+  15: 16 times
+  19: 15 times
+  12: 15 times
+  14: 13 times
+  21: 13 times
+  18: 13 times
+  20: 13 times
+  1: 12 times
+  6: 12 times
+  13: 11 times
+  11: 10 times
+  22: 9 times
+  1: 7 times
+  17: 5 times
+  25: 3 times
+  0: 3 times
+  23: 2 times
+  24: 1 times
+  0: 1 times
+====================================================================================================
+Counts of unique values in 'Age':
+  33: 24 times
+  29: 23 times
+  35: 22 times
+  31: 21 times
+  44: 21 times
+  36: 20 times
+  34: 17 times
+  45: 17 times
+  38: 15 times
+  30: 15 times
+  47: 15 times
+  40: 13 times
+  28: 13 times
+  39: 12 times
+  32: 12 times
+  41: 12 times
+  37: 12 times
+  43: 12 times
+  42: 11 times
+  46: 10 times
+  27: 9 times
+  48: 9 times
+  50: 8 times
+  49: 8 times
+  26: 7 times
+  51: 5 times
+  25: 4 times
+  52: 3 times
+  24: 1 times
+  23: 1 times
+  53: 1 times
+====================================================================================================
+Counts of unique values in 'Gender':
+  Male: 194 times
+  Female: 179 times
+====================================================================================================
+Counts of unique values in 'Job Title':
+  Director of Marketing: 12 times
+  Director of Operations: 11 times
+  Senior Business Analyst: 10 times
+  Senior Marketing Analyst: 9 times
+  Senior Marketing Manager: 9 times
+  Junior Business Analyst: 8 times
+  Senior Financial Analyst: 7 times
+  Junior Financial Analyst: 7 times
+  Junior Business Development Associate: 7 times
+  Senior Project Manager: 7 times
+  Senior Data Scientist: 7 times
+  Senior Software Engineer: 6 times
+  Junior Marketing Coordinator: 6 times
+  Senior Product Manager: 6 times
+  Senior Financial Manager: 5 times
+  Junior Operations Analyst: 5 times
+  Junior Project Manager: 5 times
+  Junior Marketing Specialist: 5 times
+  Senior Product Designer: 5 times
+  Senior Operations Manager: 5 times
+  Senior Project Coordinator: 5 times
+  Senior Data Engineer: 4 times
+  Senior Marketing Specialist: 4 times
+  Senior Operations Coordinator: 4 times
+  Senior Business Development Manager: 4 times
+  Junior Product Manager: 4 times
+  Junior Sales Representative: 4 times
+  Senior Data Analyst: 3 times
+  Senior Marketing Coordinator: 3 times
+  Junior Accountant: 3 times
+  Senior Software Developer: 3 times
+  Senior Financial Advisor: 3 times
+  Junior Operations Manager: 3 times
+  Senior UX Designer: 3 times
+  Junior Marketing Manager: 3 times
+  Senior Scientist: 3 times
+  Marketing Coordinator: 3 times
+  Sales Manager: 3 times
+  Junior Marketing Analyst: 3 times
+  Senior HR Manager: 3 times
+  Junior HR Coordinator: 2 times
+  Junior Software Developer: 2 times
+  Senior Human Resources Manager: 2 times
+  Senior Sales Representative: 2 times
+  Director of Human Resources: 2 times
+  Junior Account Manager: 2 times
+  Senior Accountant: 2 times
+  Data Analyst: 2 times
+  Senior Sales Manager: 2 times
+  Junior HR Generalist: 2 times
+  Director of Finance: 2 times
+  Director of Engineering: 2 times
+  Junior Business Operations Analyst: 2 times
+  Product Manager: 2 times
+  Senior Operations Analyst: 2 times
+  Senior IT Consultant: 2 times
+  Business Analyst: 2 times
+  Senior Engineer: 2 times
+  Operations Manager: 2 times
+  HR Generalist: 2 times
+  Project Manager: 2 times
+  HR Manager: 2 times
+  Recruiter: 2 times
+  Marketing Analyst: 2 times
+  Sales Associate: 2 times
+  Event Coordinator: 2 times
+  Senior Manager: 2 times
+  Customer Service Manager: 2 times
+  Administrative Assistant: 2 times
+  Senior Product Marketing Manager: 1 times
+  Junior Financial Advisor: 1 times
+  Junior Operations Coordinator: 1 times
+  Senior Research Scientist: 1 times
+  Junior Web Designer: 1 times
+  Senior HR Specialist: 1 times
+  Junior Data Analyst: 1 times
+  Junior Research Scientist: 1 times
+  Senior Product Development Manager: 1 times
+  Senior Training Specialist: 1 times
+  Senior Software Architect: 1 times
+  Director of HR: 1 times
+  Sales Operations Manager: 1 times
+  Director of Sales: 1 times
+  Director of Product Management: 1 times
+  Senior Human Resources Coordinator: 1 times
+  Senior IT Project Manager: 1 times
+  Senior Researcher: 1 times
+  Senior Account Manager: 1 times
+  Senior Quality Assurance Analyst: 1 times
+  Director of Sales and Marketing: 1 times
+  Senior Account Executive: 1 times
+  Director of Business Development: 1 times
+  Junior Copywriter: 1 times
+  Junior Social Media Manager: 1 times
+  Junior Recruiter: 1 times
+  Senior Human Resources Specialist: 1 times
+  Junior Software Engineer: 1 times
+  Director of Human Capital: 1 times
+  Junior Advertising Coordinator: 1 times
+  Senior IT Support Specialist: 1 times
+  Junior Customer Support Specialist: 1 times
+  Junior UX Designer: 1 times
+  Senior Marketing Director: 1 times
+  Junior Social Media Specialist: 1 times
+  Junior Data Scientist: 1 times
+  Software Engineer: 1 times
+  Senior HR Generalist: 1 times
+  UX Designer: 1 times
+  Data Scientist: 1 times
+  Marketing Specialist: 1 times
+  Technical Writer: 1 times
+  Project Engineer: 1 times
+  Customer Success Rep: 1 times
+  Sales Executive: 1 times
+  Operations Director: 1 times
+  Principal Engineer: 1 times
+  Network Engineer: 1 times
+  Strategy Consultant: 1 times
+  Copywriter: 1 times
+  Account Manager: 1 times
+  Help Desk Analyst: 1 times
+  Business Intelligence Analyst: 1 times
+  Accountant: 1 times
+  CEO: 1 times
+  Product Designer: 1 times
+  Senior Consultant: 1 times
+  Junior Developer: 1 times
+  Software Manager: 1 times
+  Social Media Specialist: 1 times
+  Financial Manager: 1 times
+  IT Support: 1 times
+  VP of Operations: 1 times
+  Sales Director: 1 times
+  Data Entry Clerk: 1 times
+  Marketing Manager: 1 times
+  Customer Service Rep: 1 times
+  Financial Analyst: 1 times
+  Software Developer: 1 times
+  Director: 1 times
+  VP of Finance: 1 times
+  Graphic Designer: 1 times
+  UX Researcher: 1 times
+  Principal Scientist: 1 times
+  Office Manager: 1 times
+  Supply Chain Analyst: 1 times
+  Software Project Manager: 1 times
+  Senior Graphic Designer: 1 times
+  Customer Success Manager: 1 times
+  IT Support Specialist: 1 times
+  Digital Content Producer: 1 times
+  Chief Data Officer: 1 times
+  Product Marketing Manager: 1 times
+  Operations Analyst: 1 times
+  Public Relations Manager: 1 times
+  Research Scientist: 1 times
+  Training Specialist: 1 times
+  Supply Chain Manager: 1 times
+  Financial Advisor: 1 times
+  Social Media Manager: 1 times
+  Junior Designer: 1 times
+  Chief Technology Officer: 1 times
+  Sales Representative: 1 times
+  Technical Recruiter: 1 times
+  Content Marketing Manager: 1 times
+  Human Resources Director: 1 times
+  Creative Director: 1 times
+  Technical Support Specialist: 1 times
+  Research Director: 1 times
+  Web Developer: 1 times
+  Business Development Manager: 1 times
+  Customer Service Representative: 1 times
+  IT Manager: 1 times
+  Digital Marketing Manager: 1 times
+  Junior Web Developer: 1 times
+====================================================================================================
+Statistics for Salary
+====================================================================================================
+Mean: 100846.77
+Median: 95000.0
+Variance: 2306221741.59
+Standard Deviation: 48023.14
+Deciles:
+  10th percentile: 40000.0
+  20th percentile: 50000.0
+  30th percentile: 61500.0
+  40th percentile: 85000.0
+  50th percentile: 95000.0
+  60th percentile: 110000.0
+  70th percentile: 130000.0
+  80th percentile: 150000.0
+  90th percentile: 170000.0
+====================================================================================================
+Statistics for Salary: Male
+====================================================================================================
+Mean: 104404.15
+Median: 100000.0
+Variance: 2475294149.4
+Standard Deviation: 49752.33
+Deciles:
+  10th percentile: 40000.0
+  20th percentile: 52000.0
+  30th percentile: 65000.0
+  40th percentile: 90000.0
+  50th percentile: 100000.0
+  60th percentile: 110000.0
+  70th percentile: 130000.0
+  80th percentile: 158000.0
+  90th percentile: 170000.0
+====================================================================================================
+Statistics for Salary: Female
+====================================================================================================
+Mean: 97011.17
+Median: 90000.0
+Variance: 2108292009.29
+Standard Deviation: 45916.14
+Deciles:
+  10th percentile: 40000.0
+  20th percentile: 50000.0
+  30th percentile: 60000.0
+  40th percentile: 80000.0
+  50th percentile: 90000.0
+  60th percentile: 104000.0
+  70th percentile: 120000.0
+  80th percentile: 150000.0
+  90th percentile: 160000.0
+====================================================================================================
+Statistics for Years of Experience
+====================================================================================================
+Mean: 10.05
+Median: 9.0
+Variance: 42.91
+Standard Deviation: 6.55
+Deciles:
+  10th percentile: 2.0
+  20th percentile: 3.0
+  30th percentile: 5.0
+  40th percentile: 7.0
+  50th percentile: 9.0
+  60th percentile: 11.0
+  70th percentile: 14.0
+  80th percentile: 16.0
+  90th percentile: 20.0
+====================================================================================================
+Statistics for Age
+====================================================================================================
+Mean: 37.45
+Median: 36.0
+Variance: 49.91
+Standard Deviation: 7.07
+Deciles:
+  10th percentile: 29.0
+  20th percentile: 31.0
+  30th percentile: 33.0
+  40th percentile: 35.0
+  50th percentile: 36.0
+  60th percentile: 39.0
+  70th percentile: 42.0
+  80th percentile: 45.0
+  90th percentile: 47.0
+====================================================================================================
+
+====================================================================================================
+
+Correlation can range [-1, 1]
+1: Perfect positive linear relationship.
+-1: Perfect negative linear relationship.
+0: No linear relationship.
+
+|r| > 0.7: Strong correlation.
+0.7 to 1: Strong positive correlation.
+-1 to -0.7: Strong negative correlation.
+0.3 < |r| ≤ 0.7: Moderate correlation.
+0.3 to 0.7: Moderate positive correlation.
+-0.7 to -0.3: Moderate negative correlation.
+|r| ≤ 0.3: Weak correlation.
+0 to 0.3: Weak positive correlation.
+-0.3 to 0: Weak negative correlation.
+
+====================================================================================================
+Correlation of higher Salary and higher Years of Experience
+ Value: 0.931
+ Strength: Strong
+ Direction: Positive
+====================================================================================================
+Coefficient (Slope): 6822.032410177719
+R-squared: 0.8660059464479428.
+ That means good fit.
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                 Salary   R-squared:                       0.866
+Model:                            OLS   Adj. R-squared:                  0.866
+Method:                 Least Squares   F-statistic:                     2391.
+Date:                Sat, 31 Aug 2024   Prob (F-statistic):          1.44e-163
+Time:                        11:57:07   Log-Likelihood:                -4163.4
+No. Observations:                 372   AIC:                             8331.
+Df Residuals:                     370   BIC:                             8339.
+Df Model:                           1
+Covariance Type:            nonrobust
+=======================================================================================
+                          coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------------
+const                3.226e+04   1673.362     19.278      0.000     2.9e+04    3.56e+04
+Years of Experience  6822.0324    139.507     48.901      0.000    6547.707    7096.358
+==============================================================================
+Omnibus:                       41.667   Durbin-Watson:                   1.851
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              123.352
+Skew:                          -0.489   Prob(JB):                     1.64e-27
+Kurtosis:                       5.646   Cond. No.                         22.1
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+====================================================================================================
+
+T-Test for Salaries by Gender, whether or not gender plays a role
+ T-Statistic: 1.49
+ P-Value: 0.14
+
+The result is not statistically significant so we fail to reject the null hypothesis
+There is no significant difference in salaries between males and females.
+====================================================================================================
+Tests for Salary vs Education, Education level, if is independent etc
+Testing normal distribution for education levels
+Shapiro-Wilk Test for Bachelor's:
+  Statistic: 0.898, P-Value: 0.000
+  Not Normally Distributed
+====================================================================================================
+Shapiro-Wilk Test for Master's:
+  Statistic: 0.937, P-Value: 0.000
+  Not Normally Distributed
+====================================================================================================
+Shapiro-Wilk Test for PhD:
+  Statistic: 0.874, P-Value: 0.000
+  Not Normally Distributed
+====================================================================================================
+
+ANOVA stat:
+The F-statistic is 158.780. This measures the ratio of variance between the group means to the variance within the groups.
+The P-value is 0.000. Since the P-value is less than 0.05, we reject the null hypothesis.This indicates that there is a statistically significant
+ difference in mean salaries across the different education levels.
+
+====================================================================================================
+       Multiple Comparison of Means - Tukey HSD, FWER=0.05       
+=================================================================
+  group1    group2   meandiff  p-adj   lower      upper    reject
+-----------------------------------------------------------------
+Bachelor's Master's 54706.2323   0.0 44638.1709 64774.2936   True
+Bachelor's      PhD 82753.4512   0.0 69859.1868 95647.7155   True
+  Master's      PhD 28047.2189   0.0 13703.7626 42390.6752   True
+-----------------------------------------------------------------
+====================================================================================================
+Is median income different between groups? Kruskal-Wallis:
+
+Kruskal-Wallis Test: H-statistic = 167.246, P-Value = 0.000
+Reject the null hypothesis, which suggests that at least one group's median salary differs, statistically significent, from the others
+====================================================================================================
+Simple statistical visualization of Salary per Education Level
+====================================================================================================
+Statistics for Age and Education Level
+Shapiro-Wilk Test for Bachelor's: Statistic = 0.960, P-Value = 0.000
+Shapiro-Wilk Test for Master's: Statistic = 0.954, P-Value = 0.002
+Shapiro-Wilk Test for PhD: Statistic = 0.944, P-Value = 0.017
+
+Kruskal-Wallis Test: H-statistic = 117.001, P-Value = 0.000
+There is a statistically significant difference in age distribution across different education levels.
+Simple statistical visualization of Age per Education Level

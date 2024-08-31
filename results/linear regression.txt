@@ -1,0 +1,25 @@
+Coefficient (Slope): 6822.032410177719
+R-squared: 0.8660059464479428.
+ That means good fit.
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                 Salary   R-squared:                       0.866
+Model:                            OLS   Adj. R-squared:                  0.866
+Method:                 Least Squares   F-statistic:                     2391.
+Date:                Sat, 31 Aug 2024   Prob (F-statistic):          1.44e-163
+Time:                        11:57:07   Log-Likelihood:                -4163.4
+No. Observations:                 372   AIC:                             8331.
+Df Residuals:                     370   BIC:                             8339.
+Df Model:                           1
+Covariance Type:            nonrobust
+=======================================================================================
+                          coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------------
+const                3.226e+04   1673.362     19.278      0.000     2.9e+04    3.56e+04
+Years of Experience  6822.0324    139.507     48.901      0.000    6547.707    7096.358
+==============================================================================
+Omnibus:                       41.667   Durbin-Watson:                   1.851
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              123.352
+Skew:                          -0.489   Prob(JB):                     1.64e-27
+Kurtosis:                       5.646   Cond. No.                         22.1
+==============================================================================

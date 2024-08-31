@@ -1,0 +1,54 @@
+T-Test for Salaries by Gender, whether or not gender plays a role
+ T-Statistic: 1.49
+ P-Value: 0.14
+
+The result is not statistically significant so we fail to reject the null hypothesis
+There is no significant difference in salaries between males and females.
+====================================================================================================
+Tests for Salary vs Education, Education level, if is independent etc
+Testing normal distribution for education levels
+Shapiro-Wilk Test for Bachelor's:
+  Statistic: 0.898, P-Value: 0.000
+  Not Normally Distributed
+====================================================================================================
+Shapiro-Wilk Test for Master's:
+  Statistic: 0.937, P-Value: 0.000
+  Not Normally Distributed
+====================================================================================================
+Shapiro-Wilk Test for PhD:
+  Statistic: 0.874, P-Value: 0.000
+  Not Normally Distributed
+====================================================================================================
+
+ANOVA stat:
+The F-statistic is 158.780. This measures the ratio of variance between the group means to the variance within the groups.
+The P-value is 0.000. Since the P-value is less than 0.05, we reject the null hypothesis.This indicates that there is a statistically significant
+ difference in mean salaries across the different education levels.
+
+====================================================================================================
+       Multiple Comparison of Means - Tukey HSD, FWER=0.05       
+=================================================================
+  group1    group2   meandiff  p-adj   lower      upper    reject
+-----------------------------------------------------------------
+Bachelor's Master's 54706.2323   0.0 44638.1709 64774.2936   True
+Bachelor's      PhD 82753.4512   0.0 69859.1868 95647.7155   True
+  Master's      PhD 28047.2189   0.0 13703.7626 42390.6752   True
+-----------------------------------------------------------------
+
+
+====================================================================================================
+Is median income different between groups? Kruskal-Wallis:
+
+Kruskal-Wallis Test: H-statistic = 167.246, P-Value = 0.000
+Reject the null hypothesis, which suggests that at least one group's median salary differs, statistically significent, from the others
+====================================================================================================
+Simple statistical visualization of Salary per Education Level == Salary_Education_visual.png
+====================================================================================================
+Statistics for Age and Education Level
+Shapiro-Wilk Test for Bachelor's: Statistic = 0.960, P-Value = 0.000
+Shapiro-Wilk Test for Master's: Statistic = 0.954, P-Value = 0.002
+Shapiro-Wilk Test for PhD: Statistic = 0.944, P-Value = 0.017
+
+Kruskal-Wallis Test: H-statistic = 117.001, P-Value = 0.000
+There is a statistically significant difference in age distribution across different education levels.
+Simple statistical visualization of Age per Education Level

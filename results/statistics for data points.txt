@@ -1,0 +1,86 @@
+====================================================================================================
+Statistics for Salary
+====================================================================================================
+Mean: 100846.77
+Median: 95000.0
+Variance: 2306221741.59
+Standard Deviation: 48023.14
+Deciles:
+  10th percentile: 40000.0
+  20th percentile: 50000.0
+  30th percentile: 61500.0
+  40th percentile: 85000.0
+  50th percentile: 95000.0
+  60th percentile: 110000.0
+  70th percentile: 130000.0
+  80th percentile: 150000.0
+  90th percentile: 170000.0
+====================================================================================================
+Statistics for Salary: Male
+====================================================================================================
+Mean: 104404.15
+Median: 100000.0
+Variance: 2475294149.4
+Standard Deviation: 49752.33
+Deciles:
+  10th percentile: 40000.0
+  20th percentile: 52000.0
+  30th percentile: 65000.0
+  40th percentile: 90000.0
+  50th percentile: 100000.0
+  60th percentile: 110000.0
+  70th percentile: 130000.0
+  80th percentile: 158000.0
+  90th percentile: 170000.0
+====================================================================================================
+Statistics for Salary: Female
+====================================================================================================
+Mean: 97011.17
+Median: 90000.0
+Variance: 2108292009.29
+Standard Deviation: 45916.14
+Deciles:
+  10th percentile: 40000.0
+  20th percentile: 50000.0
+  30th percentile: 60000.0
+  40th percentile: 80000.0
+  50th percentile: 90000.0
+  60th percentile: 104000.0
+  70th percentile: 120000.0
+  80th percentile: 150000.0
+  90th percentile: 160000.0
+====================================================================================================
+Statistics for Years of Experience
+====================================================================================================
+Mean: 10.05
+Median: 9.0
+Variance: 42.91
+Standard Deviation: 6.55
+Deciles:
+  10th percentile: 2.0
+  20th percentile: 3.0
+  30th percentile: 5.0
+  40th percentile: 7.0
+  50th percentile: 9.0
+  60th percentile: 11.0
+  70th percentile: 14.0
+  80th percentile: 16.0
+  90th percentile: 20.0
+====================================================================================================
+Statistics for Age
+====================================================================================================
+Mean: 37.45
+Median: 36.0
+Variance: 49.91
+Standard Deviation: 7.07
+Deciles:
+  10th percentile: 29.0
+  20th percentile: 31.0
+  30th percentile: 33.0
+  40th percentile: 35.0
+  50th percentile: 36.0
+  60th percentile: 39.0
+  70th percentile: 42.0
+  80th percentile: 45.0
+  90th percentile: 47.0
+====================================================================================================

@@ -1,0 +1,21 @@
+Correlation can range [-1, 1]
+1: Perfect positive linear relationship.
+-1: Perfect negative linear relationship.
+0: No linear relationship.
+
+|r| > 0.7: Strong correlation.
+0.7 to 1: Strong positive correlation.
+-1 to -0.7: Strong negative correlation.
+0.3 < |r| ≤ 0.7: Moderate correlation.
+0.3 to 0.7: Moderate positive correlation.
+-0.7 to -0.3: Moderate negative correlation.
+|r| ≤ 0.3: Weak correlation.
+0 to 0.3: Weak positive correlation.
+-0.3 to 0: Weak negative correlation.
+
+====================================================================================================
+Correlation of higher Salary and higher Years of Experience
+ Value: 0.931
+ Strength: Strong
+ Direction: Positive
+====================================================================================================
