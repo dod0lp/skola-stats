@@ -121,11 +121,14 @@ separate()
 print(summarize_column_stats(data_female, str_salary))
 separate()
 
-print()
-
 print("Statistics for Years of Experience")
 separate()
 print(summarize_column_stats(data, str_yoe))
+separate()
+
+print("Statistics for Age")
+separate()
+print(summarize_column_stats(data, str_age))
 separate()
 
 print()
@@ -312,7 +315,7 @@ print(anova_salary_edu_interpretation)
 
 separate()
 
-# If the ANOVA P-Value is significant, perform "Tukey's" post-hoc test
+# if the ANOVA P-Value is significant, perform "Tukey's" post-hoc test
 # https://en.wikipedia.org/wiki/Tukey%27s_range_test
 if anova_p_value < alpha_value:
     tukey_result = pairwise_tukeyhsd(endog=salary_levels, groups=education_levels, alpha=alpha_value)
@@ -320,7 +323,7 @@ if anova_p_value < alpha_value:
 
 separate()
 
-# If data is not normally distributed or ANOVA assumptions are violated, perform Kruskal-Wallis Test
+# if data is not normally distributed or ANOVA assumptions are violated, perform Kruskal-Wallis Test
 # https://en.wikipedia.org/wiki/Kruskal%E2%80%93Wallis_test
 print("Is median income different between groups? Kruskal-Wallis:\n")
 kruskal_stat, kruskal_p_value = stats.kruskal(*[group for _, group in education_groups])
@@ -376,7 +379,7 @@ else:
     else:
         print("There is no statistically significant difference in age distribution across different education levels.")
 
-# Visualize the distribution of age by education level
+print("Simple statistical visualization of Age per Education Level")
 plt.figure(figsize=(12, 6))
 sns.boxplot(x="Education Level", y="Age", data=data_cleaned)
 plt.title("Age Distribution by Education Level")
